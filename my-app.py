@@ -1,8 +1,5 @@
-# Template for Processing sketches.
-
- def setup():
+def setup():
     size(1000, 500)
-    
 tank = PVector(400, 400)
 turn = 0
 speed = 0
@@ -26,9 +23,9 @@ def draw():
     translate(tank.x, tank.y)
     rotate(radians(turn))
     fill(0, 255, 0)
-    rect(-20, -20, 40, 40)
-    rect(-20, -15, 40, 30)
-    rect(0, -5, 30, 10)
+    rect(-25, -20, 50, 40)
+    rect(-25, -15, 50, 30)
+    rect(0, -3, 40, 6)
    
     fill(0, 255, 0)
     ellipse(0, 0, 25, 25)
