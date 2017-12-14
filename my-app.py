@@ -1,8 +1,16 @@
 def setup():
     size(1000, 500)
-fontList = PFont.list()
-print(fontList)
-# TANK 1
+    global img
+img = create
+img = createGrapics(width/4, height/4)
+img.beginDraw()
+img.background(0)
+img.fill(255, 0, 0)
+for i in range 15:
+    x = random(img.width)
+    y = random(img.length)
+    img.line(x, y, random(1, 50), random(1, 50))
+    # TANK 1
 tank = PVector(400, 400)
 turn = 0
 speed = 0
@@ -23,8 +31,8 @@ turnCCW2 = False
 turnCW2 = False
 
 def draw():
+    global img
     # TANK 1
-    font = createFont("Ubuntu Mono Bold", 20)
     global speed
     global turn
     global tank
@@ -33,20 +41,18 @@ def draw():
     global turnCCW
     global turnCW
     background(255)
-    
+    image(img 50, 50)
+    fill(0, 255, 0)
+   
     translate(tank.x, tank.y)
     rotate(radians(turn))
-    
-    fill(50, 50, 50)
+    fill(0, 255, 0)
     rect(-25, -20, 50, 40)
     rect(-25, -15, 50, 30)
     rect(0, -3, 40, 6)
-    ellipse(0, 0, 25, 25)  
-     
-    fill(0, 255, 100)
-    textFont(font)
-    text("P1", -10, 5)
-    
+   
+    fill(0, 255, 0)
+    ellipse(0, 0, 25, 25)
     speed = PVector.fromAngle(radians(turn))
     speed.mult(3)
     if tank.x >= 1000 :
@@ -65,9 +71,8 @@ def draw():
         turn -= 4
     elif turnCW == True:
         turn += 4
+       
     resetMatrix()
-    
-    
     # TANK 2
     global speed2
     global turn2
@@ -77,19 +82,17 @@ def draw():
     global turnCCW2
     global turnCW2
 
+    fill(0, 255, 0)
+   
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
-    
-    fill(50, 50, 50)
+    fill(255, 0, 0)
     rect(-25, -20, 50, 40)
     rect(-25, -15, 50, 30)
     rect(0, -3, 40, 6)
+   
+    fill(255, 0, 0)
     ellipse(0, 0, 25, 25)
-    
-    fill(255, 0, 100)
-    textFont(font)
-    text("P2", -10, 5)
-    
     speed2 = PVector.fromAngle(radians(turn2))
     speed2.mult(3)
     if tank2.x >= 1000 :
