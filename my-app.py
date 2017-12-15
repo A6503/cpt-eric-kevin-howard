@@ -1,15 +1,17 @@
+img = None
 def setup():
     size(1000, 500)
     global img
-img = create
-img = createGrapics(width/4, height/4)
+
+img = createGraphics(width/4, height/4) # Width and Length is not defined
 img.beginDraw()
 img.background(0)
 img.fill(255, 0, 0)
-for i in range 15:#Incorrect
+for i in range(15):
     x = random(img.width)
     y = random(img.length)
     img.line(x, y, random(1, 50), random(1, 50))
+img.endDraw()
     # TANK 1
 tank = PVector(400, 400)
 turn = 0
@@ -41,7 +43,7 @@ def draw():
     global turnCCW
     global turnCW
     background(255)
-    image(img 50, 50)
+    image(img, 50, 50)
     fill(0, 255, 0)
    
     translate(tank.x, tank.y)
