@@ -5,14 +5,7 @@ def setup():
     img.beginDraw()
     img.background(0)
     img.fill(255)
-    for i in range(15):
-        fill(0)
-        y = random(500)
-        rect(random(1000), y, random(1000), 10)
-    for i in range(15):
-        fill(0)
-        x = random(1000)
-        rect(x, random(500), 10, random(500))
+    
 # TANK 1
 tank = PVector(400, 400)
 turn = 0
@@ -36,8 +29,8 @@ turnCW2 = False
 def draw():
     font = createFont("Ubuntu Mono Bold", 20)
     global img
-    image(img,0,0)
-    background(img)
+    background(255)
+    
     # TANK 1
     global speed
     global turn
@@ -54,13 +47,11 @@ def draw():
     rect(-25, -15, 50, 30)
     rect(0, -3, 40, 6)
     ellipse(0, 0, 25, 25)  
-     
-    fill(0, 255, 100)
     resetMatrix()
     translate(tank.x, tank.y)
+    fill(0, 255, 100)
     textFont(font)
     text("P1", -10, 5)
-    
     speed = PVector.fromAngle(radians(turn))
     speed.mult(3)
     if tank.x >= 1000 :
@@ -80,8 +71,7 @@ def draw():
     elif turnCW == True:
         turn += 4
     resetMatrix()
-###############################    resetMatrix()
-    translate(tank.x, tank.y)########################################################    
+#######################################################################################    
 #######################################################################################    
     # TANK 2
     global speed2
@@ -101,7 +91,7 @@ def draw():
     rect(0, -3, 40, 6)
     ellipse(0, 0, 25, 25)
     resetMatrix()
-    translate(tank.x, tank.y)
+    translate(tank2.x, tank2.y)
     fill(255, 0, 100)
     textFont(font)
     text("P2", -10, 5)
