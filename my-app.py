@@ -6,7 +6,7 @@ img = createGrapics(width/4, height/4)
 img.beginDraw()
 img.background(0)
 img.fill(255, 0, 0)
-for i in range 15:
+for i in range 15:#Incorrect
     x = random(img.width)
     y = random(img.length)
     img.line(x, y, random(1, 50), random(1, 50))
