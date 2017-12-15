@@ -56,6 +56,8 @@ def draw():
     ellipse(0, 0, 25, 25)  
      
     fill(0, 255, 100)
+    resetMatrix()
+    translate(tank.x, tank.y)
     textFont(font)
     text("P1", -10, 5)
     
@@ -78,7 +80,8 @@ def draw():
     elif turnCW == True:
         turn += 4
     resetMatrix()
-#######################################################################################    
+###############################    resetMatrix()
+    translate(tank.x, tank.y)########################################################    
 #######################################################################################    
     # TANK 2
     global speed2
@@ -97,7 +100,8 @@ def draw():
     rect(-25, -15, 50, 30)
     rect(0, -3, 40, 6)
     ellipse(0, 0, 25, 25)
-    
+    resetMatrix()
+    translate(tank.x, tank.y)
     fill(255, 0, 100)
     textFont(font)
     text("P2", -10, 5)
