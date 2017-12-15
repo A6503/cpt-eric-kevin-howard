@@ -1,16 +1,19 @@
-img = None
 def setup():
     size(1000, 500)
     global img
-
-    img = createGraphics(1000, 500) # Width and Length is not defined
+    img = createGraphics(1000, 500)
     img.beginDraw()
     img.background(0)
-    img.fill(255, 0, 0)
+    img.fill(255)
     for i in range(15):
-       img.line(
-    img.endDraw()
-    # TANK 1
+        fill(0)
+        y = random(500)
+        rect(random(1000), y, random(1000), 10)
+    for i in range(15):
+        fill(0)
+        x = random(1000)
+        rect(x, random(500), 10, random(500))
+# TANK 1
 tank = PVector(400, 400)
 turn = 0
 speed = 0
@@ -31,7 +34,10 @@ turnCCW2 = False
 turnCW2 = False
 
 def draw():
+    font = createFont("Ubuntu Mono Bold", 20)
     global img
+    image(img,0,0)
+    background(img)
     # TANK 1
     global speed
     global turn
@@ -40,19 +46,19 @@ def draw():
     global moveBack
     global turnCCW
     global turnCW
-    background(255)
-    image(img, 50, 50)
-    fill(0, 255, 0)
-   
     translate(tank.x, tank.y)
     rotate(radians(turn))
-    fill(0, 255, 0)
+    
+    fill(50, 50, 50)
     rect(-25, -20, 50, 40)
     rect(-25, -15, 50, 30)
     rect(0, -3, 40, 6)
-   
-    fill(0, 255, 0)
-    ellipse(0, 0, 25, 25)
+    ellipse(0, 0, 25, 25)  
+     
+    fill(0, 255, 100)
+    textFont(font)
+    text("P1", -10, 5)
+    
     speed = PVector.fromAngle(radians(turn))
     speed.mult(3)
     if tank.x >= 1000 :
@@ -71,8 +77,9 @@ def draw():
         turn -= 4
     elif turnCW == True:
         turn += 4
-       
     resetMatrix()
+#######################################################################################    
+#######################################################################################    
     # TANK 2
     global speed2
     global turn2
@@ -82,17 +89,19 @@ def draw():
     global turnCCW2
     global turnCW2
 
-    fill(0, 255, 0)
-   
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
-    fill(255, 0, 0)
+    
+    fill(50, 50, 50)
     rect(-25, -20, 50, 40)
     rect(-25, -15, 50, 30)
     rect(0, -3, 40, 6)
-   
-    fill(255, 0, 0)
     ellipse(0, 0, 25, 25)
+    
+    fill(255, 0, 100)
+    textFont(font)
+    text("P2", -10, 5)
+    
     speed2 = PVector.fromAngle(radians(turn2))
     speed2.mult(3)
     if tank2.x >= 1000 :
@@ -111,6 +120,7 @@ def draw():
         turn2 -= 4
     elif turnCW2 == True:
         turn2 += 4
+
 def keyPressed():
     # TANK 1
     global moveUp
