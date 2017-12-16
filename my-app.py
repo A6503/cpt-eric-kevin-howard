@@ -1,10 +1,19 @@
+img = None
 def setup():
     size(1000, 500)
     global img
     img = createGraphics(1000, 500)
     img.beginDraw()
-    img.background(0)
-    img.fill(255)
+    img.background(255)
+    img.fill(0, 0, 255)
+    for i in range(15):
+        img.rect(100, 100, 100, 100)
+        img.rect(500, 250, 100, 100)
+        img.rect(300, 250, 50, 50)
+        img.rect(750, 250, 50, 50)
+        img.rect(600, 100, 50, 50)
+        img.rect(850, 380, 50, 50)
+        img.endDraw()
     
 # TANK 1
 tank = PVector(400, 400)
@@ -26,10 +35,11 @@ moveBack2 = False
 turnCCW2 = False
 turnCW2 = False
 
+
 def draw():
     font = createFont("Ubuntu Mono Bold", 20)
     global img
-    background(255)
+    background(img)
     
     # TANK 1
     global speed
