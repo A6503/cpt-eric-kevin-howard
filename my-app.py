@@ -206,6 +206,7 @@ def keyPressed():
     global moveBack2
     global turnCCW2
     global turnCW2
+    global shot2
     if keyCode == UP:
         moveUp2 = True
         moveBack2 = False
@@ -218,7 +219,7 @@ def keyPressed():
     if keyCode == RIGHT:
         turnCW2 = True
         turnCCW2 = False
-     if key == " ":
+     if key == "m":
         shot2 = True
 def keyReleased():
     # TANK 1
