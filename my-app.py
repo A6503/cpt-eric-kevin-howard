@@ -13,6 +13,9 @@ def setup():
         img.rect(750, 250, 50, 50)
         img.rect(600, 100, 50, 50)
         img.rect(850, 380, 50, 50)
+        img.rect(100, 350, 75, 75)
+        img.rect(850, 100, 50, 50)
+        img.rect(325, 100, 60, 60)
         img.endDraw()
     
 # TANK 1
