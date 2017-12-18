@@ -74,16 +74,16 @@ def draw():
     speed.mult(3)
     if tank.x >= 1000 :
         tank.x = 999
-        turn += 180
     elif tank.x <= 0:
         tank.x = 1
-        turn += 180
+    elif tank.y >= 500:
+        tank.y = 499
+    elif tank.y <= 0:
+        tank.y = 1
     elif moveUp == True:
         tank.add(speed)
     elif moveBack == True:
         tank.sub(speed)
-    if tank.y >= 500 or tank.y <= 0:
-        turn *= -1
     elif turnCCW == True:
         turn -= 4
     elif turnCW == True:
