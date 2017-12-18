@@ -70,17 +70,17 @@ def draw():
         bs.set(speed)
     else:
         bullet.add(bs)
-        if get(int(bullet.x+5), int(bullet.y)) != -1:
-            bullet.x -= 2
+        if get(int(bullet.x+7), int(bullet.y)) != -1:
+            bs.x -= 1
             bs.x *= -1
-        elif get(int(bullet.x-5), int(bullet.y)) != -1:
-            bullet.x += 2
+        elif get(int(bullet.x-7), int(bullet.y)) != -1:
+            bs.x += 1
             bs.x *= -1
-        if get(int(bullet.x), int(bullet.y+5)) != -1:
-            bullet.y -= 2
+        if get(int(bullet.x), int(bullet.y+7)) != -1:
+            bs.y -= 1
             bs.y *= -1
-        elif get(int(bullet.x), int(bullet.y-5)) != -1:
-            bullet.y += 2
+        elif get(int(bullet.x), int(bullet.y-7)) != -1:
+            bs.y += 1
             bs.y *= -1
     translate(tank.x, tank.y)
     rotate(radians(turn))
@@ -134,17 +134,17 @@ def draw():
         bs2.set(speed2)
     else:
         bullet2.add(bs2)
-        if get(int(bullet2.x+5), int(bullet2.y)) != -1:
-            bullet2.x -= 2
+        if get(int(bullet2.x+7), int(bullet2.y)) != -1:
+            bs2.x -= 1
             bs2.x *= -1
-        elif get(int(bullet2.x-5), int(bullet2.y)) != -1:
-            bullet2.x += 2
+        elif get(int(bullet2.x-7), int(bullet2.y)) != -1:
+            bs2.x += 1
             bs2.x *= -1
-        if get(int(bullet2.x), int(bullet2.y+5)) != -1:
-            bullet2.y -= 2
+        if get(int(bullet2.x), int(bullet2.y+7)) != -1:
+            bs2.y -= 1
             bs2.y *= -1
-        elif get(int(bullet2.x), int(bullet2.y-5)) != -1:
-            bullet2.y += 2
+        elif get(int(bullet2.x), int(bullet2.y-7)) != -1:
+            bs2.y += 1
             bs2.y *= -1
 
     translate(tank2.x, tank2.y)
