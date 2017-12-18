@@ -67,7 +67,7 @@ def draw():
         bs = PVector(speed)
     else:
         bullet.add(bs)
-        print(get(int(bullet.x+20),int(bullet.y+20))
+        print(get(int(bullet.x+20),int(bullet.y+20)))
         if get(int(bullet.x+15), int(bullet.y)) == 0:
             bs.x *= -1
         elif get(int(bullet.x-15), int(bullet.y)) == 0:
