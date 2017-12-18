@@ -121,7 +121,7 @@ def draw():
     elif tank2.x <= 0:
         tank2.x = 1
     elif tank2.y >= 500 :
-        tank2.x = 499
+        tank2.y = 499
     elif tank2.y <= 0:
         tank2.y = 1
     elif moveUp2 == True:
