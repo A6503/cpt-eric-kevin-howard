@@ -70,14 +70,17 @@ def draw():
         bs.set(speed)
     else:
         bullet.add(bs)
-        print(get(int(bullet.x+20),int(bullet.y+20)))
-        if get(int(bullet.x+15), int(bullet.y)) == 0:
+        if get(int(bullet.x+5), int(bullet.y)) != -1:
+            bullet.x -= 2
             bs.x *= -1
-        elif get(int(bullet.x-15), int(bullet.y)) == 0:
+        elif get(int(bullet.x-5), int(bullet.y)) != -1:
+            bullet.x += 2
             bs.x *= -1
-        if get(int(bullet.x), int(bullet.y+15)) == 0:
+        if get(int(bullet.x), int(bullet.y+5)) != -1:
+            bullet.y -= 2
             bs.y *= -1
-        elif get(int(bullet.x), int(bullet.y+15)) == 0:
+        elif get(int(bullet.x), int(bullet.y-5)) != -1:
+            bullet.y += 2
             bs.y *= -1
     translate(tank.x, tank.y)
     rotate(radians(turn))
@@ -121,6 +124,28 @@ def draw():
     global moveBack2
     global turnCCW2
     global turnCW2
+    global bullet2
+    global shot2
+    global frag2
+    fill(0)
+    ellipse(bullet2.x, bullet2.y, 6, 6)
+    if shot2 == False:
+        bullet2.set(tank2)
+        bs2.set(speed2)
+    else:
+        bullet2.add(bs2)
+        if get(int(bullet2.x+5), int(bullet2.y)) != -1:
+            bullet2.x -= 2
+            bs2.x *= -1
+        elif get(int(bullet2.x-5), int(bullet2.y)) != -1:
+            bullet2.x += 2
+            bs2.x *= -1
+        if get(int(bullet2.x), int(bullet2.y+5)) != -1:
+            bullet2.y -= 2
+            bs2.y *= -1
+        elif get(int(bullet2.x), int(bullet2.y-5)) != -1:
+            bullet2.y += 2
+            bs2.y *= -1
 
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
@@ -193,6 +218,8 @@ def keyPressed():
     if keyCode == RIGHT:
         turnCW2 = True
         turnCCW2 = False
+     if key == " ":
+        shot2 = True
 def keyReleased():
     # TANK 1
     global moveUp
