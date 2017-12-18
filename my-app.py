@@ -24,6 +24,10 @@ moveUp = False
 moveBack = False
 turnCCW = False
 turnCW = False
+#Bullet
+bullet = PVector(400, 400)
+shot = False
+frag = False
 
 # TANK 2
 tank2 = PVector(200, 200)
@@ -34,6 +38,10 @@ moveUp2 = False
 moveBack2 = False
 turnCCW2 = False
 turnCW2 = False
+#Bullet 2
+bullet2 = PVector(200, 200)
+shot2 = False
+frag2 = False
 
 
 def draw():
