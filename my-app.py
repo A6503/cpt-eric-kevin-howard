@@ -28,11 +28,11 @@ turnCW = False
 bullet = PVector(400, 400)
 shot = False
 frag = False
-
+bs = PVector(0, 0)
 # TANK 2
 tank2 = PVector(200, 200)
 turn2 = 0
-speed2 = 0
+speed2 = PVector(0,0)
 # Moving tank 2
 moveUp2 = False
 moveBack2 = False
@@ -42,10 +42,10 @@ turnCW2 = False
 bullet2 = PVector(200, 200)
 shot2 = False
 frag2 = False
-
+bs2 = PVector(0,0)
 
 def draw():
-    font = createFont("Ubuntu Mono Bold", 20)
+    font = createFont("Ubuntu Mono Bold", 20)# Font
     global img
     background(img)
     
@@ -64,7 +64,7 @@ def draw():
     ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
         bullet.set(tank)
-        bs = PVector(speed)
+        bs.set(speed)
     else:
         bullet.add(bs)
         print(get(int(bullet.x+20),int(bullet.y+20)))
