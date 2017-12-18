@@ -18,7 +18,7 @@ def setup():
 # TANK 1
 tank = PVector(400, 400)
 turn = 0
-speed = 0
+speed = PVector(0, 0)
 # Moving tank 1
 moveUp = False
 moveBack = False
@@ -67,7 +67,7 @@ def draw():
         bs = PVector(speed)
     else:
         bullet.add(bs)
-        print(get(int(bullet.x),int(bullet.y))
+        print(get(int(bullet.x+20),int(bullet.y+20))
         if get(int(bullet.x+15), int(bullet.y)) == 0:
             bs.x *= -1
         elif get(int(bullet.x-15), int(bullet.y)) == 0:
@@ -158,6 +158,7 @@ def keyPressed():
     global moveBack
     global turnCCW
     global turnCW
+    global shot
     if key == "w":
         moveUp = True
         moveBack = False
