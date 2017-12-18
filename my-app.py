@@ -84,7 +84,7 @@ def draw():
         tank.add(speed)
     elif moveBack == True:
         tank.sub(speed)
-    elif turnCCW == True:
+    if turnCCW == True:
         turn -= 4
     elif turnCW == True:
         turn += 4
@@ -128,7 +128,7 @@ def draw():
         tank2.add(speed2)
     elif moveBack2 == True:
         tank2.sub(speed2)
-    elif turnCCW2 == True:
+    if turnCCW2 == True:
         turn2 -= 4
     elif turnCW2 == True:
         turn2 += 4
