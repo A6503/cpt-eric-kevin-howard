@@ -57,6 +57,25 @@ def draw():
     global moveBack
     global turnCCW
     global turnCW
+    global bullet
+    global shot
+    global frag
+    fill(0)
+    ellipse(bullet.x, bullet.y, 6, 6)
+    if shot == False:
+        bullet.set(tank)
+        bs = PVector(speed)
+    else:
+        bullet.add(bs)
+        print(get(int(bullet.x),int(bullet.y))
+        if get(int(bullet.x+15), int(bullet.y)) == 0:
+            bs.x *= -1
+        elif get(int(bullet.x-15), int(bullet.y)) == 0:
+            bs.x *= -1
+        if get(int(bullet.x), int(bullet.y+15)) == 0:
+            bs.y *= -1
+        elif get(int(bullet.x), int(bullet.y+15)) == 0:
+            bs.y *= -1
     translate(tank.x, tank.y)
     rotate(radians(turn))
     
@@ -151,7 +170,8 @@ def keyPressed():
     if key == "d":
         turnCW = True
         turnCCW = False
-        
+    if key == "q":
+        shot = True
     # TANK 2
     global moveUp2
     global moveBack2
