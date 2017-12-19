@@ -1,3 +1,11 @@
+ home = createGraphics(1000, 500)
+    home.beginDraw()
+    home.background(100)
+    home.fill(0)
+    home.textSize(100)
+    home.text("Tank Game", 210, 100)
+    home.textSize(200)
+    home.text("Play", 290, 350)
 img = None
 def setup():
     size(1000, 500)
