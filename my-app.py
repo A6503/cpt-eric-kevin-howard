@@ -11,62 +11,6 @@ def setup():
     home.text("Tank Game", 210, 100)
     home.textSize(200)
     home.text("Play", 290, 350)
-    home.endDraw()
-    img = createGraphics(1000, 500)
-    img.beginDraw()
-    img.background(255)
-    img.fill(0, 0, 255)
-
-    img.rect(100, 100, 100, 100)
-    img.rect(500, 250, 100, 100)
-    img.rect(300, 250, 50, 50)
-    img.rect(750, 250, 50, 50)
-    img.rect(600, 100, 50, 50)
-    img.rect(850, 380, 50, 50)
-           
-    img.rect(100, 350, 75, 75)
-    img.rect(850, 100, 50, 50)
-    img.rect(325, 100, 60, 60)
-    img.endDraw()
-    
-# TANK 1
-tank = PVector(400, 400)
-turn = 0
-speed = PVector(0, 0)
-# Moving tank 1
-moveUp = False
-moveBack = False
-turnCCW = False
-turnCW = False
-#Bullet
-bullet = PVector(400, 400)
-shot = False
-frag = False
-bulletSpeed = PVector(0, 0)
-# TANK 2
-tank2 = PVector(200, 200)
-turn2 = 0
-speed2 = PVector(0,0)
-# Moving tank 2
-moveUp2 = False
-moveBack2 = False
-turnCCW2 = False
-turnCW2 = False
-#Bullet 2
-bullet2 = PVector(200, 200)homeScreen = True
-img = None
-def setup():
-    size(1000, 500)
-    global img
-    global home
-    home = createGraphics(1000, 500)
-    home.beginDraw()
-    home.background(100)
-    home.fill(0)
-    home.textSize(100)
-    home.text("Tank Game", 210, 100)
-    home.textSize(200)
-    home.text("Play", 290, 350)
     img = createGraphics(1000, 500)
     img.beginDraw()
     img.background(255)
