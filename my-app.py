@@ -68,20 +68,26 @@ def draw():
     if shot == False:
         bullet.set(tank)
         bs.set(speed)
+        global integrity
+        integrity = 0
     else:
+        global integrity
         bullet.add(bs)
-        if get(int(bullet.x+7), int(bullet.y)) != -1:
-            bs.x -= 1
+        if get(int(bullet.x+10), int(bullet.y)) != -1:
+            
             bs.x *= -1
-        elif get(int(bullet.x-7), int(bullet.y)) != -1:
-            bs.x += 1
+        elif get(int(bullet.x-10), int(bullet.y)) != -1:
+            
             bs.x *= -1
-        if get(int(bullet.x), int(bullet.y+7)) != -1:
-            bs.y -= 1
+        if get(int(bullet.x), int(bullet.y+10)) != -1:
+            
             bs.y *= -1
-        elif get(int(bullet.x), int(bullet.y-7)) != -1:
-            bs.y += 1
+        elif get(int(bullet.x), int(bullet.y-10)) != -1:
+    
             bs.y *= -1
+        integrity += 1
+        if integrity >= 600:
+            shot = False
     translate(tank.x, tank.y)
     rotate(radians(turn))
     
@@ -132,20 +138,26 @@ def draw():
     if shot2 == False:
         bullet2.set(tank2)
         bs2.set(speed2)
+        global integrity2
+        integrity2 = 0
     else:
         bullet2.add(bs2)
         if get(int(bullet2.x+7), int(bullet2.y)) != -1:
-            bs2.x -= 1
+            
             bs2.x *= -1
         elif get(int(bullet2.x-7), int(bullet2.y)) != -1:
-            bs2.x += 1
+            
             bs2.x *= -1
         if get(int(bullet2.x), int(bullet2.y+7)) != -1:
-            bs2.y -= 1
+            
             bs2.y *= -1
         elif get(int(bullet2.x), int(bullet2.y-7)) != -1:
-            bs2.y += 1
+            
             bs2.y *= -1
+        global integrity2
+        integrity2 += 1
+        if integrity2 >= 300:
+            shot2 == False
 
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
