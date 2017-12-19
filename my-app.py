@@ -7,6 +7,9 @@ def setup():
     home = createGraphics(1000, 500)
     home.beginDraw()
     home.background(100)
+    home.fill(0, 255, 255)
+    home.noStroke()
+    home.rect(180, 10, 600, 120)
     home.fill(0)
     home.textSize(100)
     home.text("Tank Game", 210, 100)
@@ -209,7 +212,10 @@ def draw():
         turn2 -= 4
     elif turnCW2 == True:
         turn2 += 4
-
+def mouseClicked():
+    global homeScreen
+    if mouseX <= 780 and mouseX >= 180 and mouseY <= 130 and mouseY >= 10:
+        homeScreen = False
 def keyPressed():
     # TANK 1
     global moveUp
