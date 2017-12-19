@@ -32,7 +32,7 @@ turnCW = False
 bullet = PVector(400, 400)
 shot = False
 frag = False
-bs = PVector(0, 0)
+bulletSpeed = PVector(0, 0)
 # TANK 2
 tank2 = PVector(200, 200)
 turn2 = 0
@@ -46,7 +46,7 @@ turnCW2 = False
 bullet2 = PVector(200, 200)
 shot2 = False
 frag2 = False
-bs2 = PVector(0,0)
+bulletSpeed2 = PVector(0,0)
 
 def draw():
     font = createFont("Ubuntu Mono Bold", 20)# Font
@@ -68,26 +68,26 @@ def draw():
     ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
         bullet.set(tank)
-        bs.set(speed)
-        global integrity
-        integrity = 0
+        bulletSpeed.set(speed)
+        global bulletTime
+        bulletTime = 0
     else:
-        global integrity
-        bullet.add(bs)
+        global bulletTime
+        bullet.add(bulletSpeed)
         if get(int(bullet.x+10), int(bullet.y)) != -1:
             
-            bs.x *= -1
+            bulletSpeed.x *= -1
         elif get(int(bullet.x-10), int(bullet.y)) != -1:
             
-            bs.x *= -1
+            bulletSpeed.x *= -1
         if get(int(bullet.x), int(bullet.y+10)) != -1:
             
-            bs.y *= -1
+            bulletSpeed.y *= -1
         elif get(int(bullet.x), int(bullet.y-10)) != -1:
     
-            bs.y *= -1
-        integrity += 1
-        if integrity >= 600:
+            bulletSpeed.y *= -1
+        bulletTime += 1
+        if bulletTime >= 600:
             shot = False
     translate(tank.x, tank.y)
     rotate(radians(turn))
@@ -138,27 +138,27 @@ def draw():
     ellipse(bullet2.x, bullet2.y, 6, 6)
     if shot2 == False:
         bullet2.set(tank2)
-        bs2.set(speed2)
-        global integrity2
-        integrity2 = 0
+        bulletSpeed2.set(speed2)
+        global bulletTime2
+        bulletTime2 = 0
     else:
-        bullet2.add(bs2)
-        if get(int(bullet2.x+7), int(bullet2.y)) != -1:
+        global bulletTime2
+        bullet2.add(bulletSpeed2)
+        if get(int(bullet2.x+10), int(bullet2.y)) != -1:
             
-            bs2.x *= -1
-        elif get(int(bullet2.x-7), int(bullet2.y)) != -1:
+            bulletSpeed2.x *= -1
+        elif get(int(bullet2.x-10), int(bullet2.y)) != -1:
             
-            bs2.x *= -1
-        if get(int(bullet2.x), int(bullet2.y+7)) != -1:
+            bulletSpeed2.x *= -1
+        if get(int(bullet2.x), int(bullet2.y+10)) != -1:
             
-            bs2.y *= -1
-        elif get(int(bullet2.x), int(bullet2.y-7)) != -1:
-            
-            bs2.y *= -1
-        global integrity2
-        integrity2 += 1
-        if integrity2 >= 300:
-            shot2 == False
+            bulletSpeed2.y *= -1
+        elif get(int(bullet2.x), int(bullet2.y-10)) != -1:
+    
+            bulletSpeed2.y *= -1
+        bulletTime2 += 1
+        if bulletTime2 >= 600:
+            shot2 = False
 
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
