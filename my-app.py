@@ -11,7 +11,7 @@ def setup():
     home.text("Tank Game", 210, 100)
     home.textSize(200)
     home.text("Play", 290, 350)
-    home.endDraw
+    home.endDraw()
 def setup():
     size(1000, 500)
     global img
@@ -71,6 +71,9 @@ frag2 = False
 bulletSpeed2 = PVector(0,0)
 
 def draw():
+    global img
+    global home
+    global homeScreen
     font = createFont("Ubuntu Mono Bold", 20)# Font
     if homeScreen == True:
         background(home)
