@@ -13,6 +13,7 @@ def setup():
         img.rect(750, 250, 50, 50)
         img.rect(600, 100, 50, 50)
         img.rect(850, 380, 50, 50)
+           
         img.rect(100, 350, 75, 75)
         img.rect(850, 100, 50, 50)
         img.rect(325, 100, 60, 60)
@@ -68,26 +69,17 @@ def draw():
     if shot == False:
         bullet.set(tank)
         bs.set(speed)
-        global integrity
-        integrity = 0
     else:
-        global integrity
         bullet.add(bs)
-        if get(int(bullet.x+10), int(bullet.y)) != -1:
-            
+        print(get(int(bullet.x+20),int(bullet.y+20)))
+        if get(int(bullet.x+15), int(bullet.y)) == 0:
             bs.x *= -1
-        elif get(int(bullet.x-10), int(bullet.y)) != -1:
-            
+        elif get(int(bullet.x-15), int(bullet.y)) == 0:
             bs.x *= -1
-        if get(int(bullet.x), int(bullet.y+10)) != -1:
-            
+        if get(int(bullet.x), int(bullet.y+15)) == 0:
             bs.y *= -1
-        elif get(int(bullet.x), int(bullet.y-10)) != -1:
-    
+        elif get(int(bullet.x), int(bullet.y+15)) == 0:
             bs.y *= -1
-        integrity += 1
-        if integrity >= 600:
-            shot = False
     translate(tank.x, tank.y)
     rotate(radians(turn))
     
@@ -130,34 +122,6 @@ def draw():
     global moveBack2
     global turnCCW2
     global turnCW2
-    global bullet2
-    global shot2
-    global frag2
-    fill(0)
-    ellipse(bullet2.x, bullet2.y, 6, 6)
-    if shot2 == False:
-        bullet2.set(tank2)
-        bs2.set(speed2)
-        global integrity2
-        integrity2 = 0
-    else:
-        bullet2.add(bs2)
-        if get(int(bullet2.x+7), int(bullet2.y)) != -1:
-            
-            bs2.x *= -1
-        elif get(int(bullet2.x-7), int(bullet2.y)) != -1:
-            
-            bs2.x *= -1
-        if get(int(bullet2.x), int(bullet2.y+7)) != -1:
-            
-            bs2.y *= -1
-        elif get(int(bullet2.x), int(bullet2.y-7)) != -1:
-            
-            bs2.y *= -1
-        global integrity2
-        integrity2 += 1
-        if integrity2 >= 300:
-            shot2 == False
 
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
@@ -218,7 +182,6 @@ def keyPressed():
     global moveBack2
     global turnCCW2
     global turnCW2
-    global shot2
     if keyCode == UP:
         moveUp2 = True
         moveBack2 = False
@@ -231,8 +194,6 @@ def keyPressed():
     if keyCode == RIGHT:
         turnCW2 = True
         turnCCW2 = False
-    if key == "m":
-        shot2 = True
 def keyReleased():
     # TANK 1
     global moveUp
