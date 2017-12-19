@@ -1,4 +1,10 @@
- home = createGraphics(1000, 500)
+homeScreen = True
+img = None
+def setup():
+    size(1000, 500)
+    global img
+    global home
+    home = createGraphics(1000, 500)
     home.beginDraw()
     home.background(100)
     home.fill(0)
@@ -6,10 +12,6 @@
     home.text("Tank Game", 210, 100)
     home.textSize(200)
     home.text("Play", 290, 350)
-img = None
-def setup():
-    size(1000, 500)
-    global img
     img = createGraphics(1000, 500)
     img.beginDraw()
     img.background(255)
@@ -58,8 +60,10 @@ bulletSpeed2 = PVector(0,0)
 
 def draw():
     font = createFont("Ubuntu Mono Bold", 20)# Font
-    global img
-    background(img)
+    if homeScreen == True:
+        background(home)
+    else:
+        background(img)
     
     # TANK 1
     global speed
