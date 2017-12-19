@@ -219,7 +219,7 @@ def keyPressed():
     if keyCode == RIGHT:
         turnCW2 = True
         turnCCW2 = False
-     if key == "m":
+    if key == "m":
         shot2 = True
 def keyReleased():
     # TANK 1
