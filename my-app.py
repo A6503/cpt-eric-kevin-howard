@@ -63,7 +63,7 @@ def draw():
         noStroke()
         fill(0)
         textSize(100)
-        text(ltimate Panzer Warriors", 250, 100)
+        text("Ultimate Panzer Warriors", 250, 100)
         fill(buttonColor)
         rect(250, 180, 460, 220)
         fill(0)
