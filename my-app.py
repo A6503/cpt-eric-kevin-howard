@@ -128,7 +128,6 @@ def draw():
     textFont(font)
     text("P1", -10, 5)
     speed = PVector.fromAngle(radians(turn))
-    speed.mult(3)
     if tank.x >= 1000 :
         tank.x = 999
     elif tank.x <= 0:
@@ -138,9 +137,9 @@ def draw():
     elif tank.y <= 0:
         tank.y = 1
     elif moveUp == True:
-        tank.add(speed)
+        tank.add(speed.mult(3))
     elif moveBack == True:
-        tank.sub(speed)
+        tank.sub(speed.mult(3))
     if turnCCW == True:
         turn -= 4
     elif turnCW == True:
@@ -200,7 +199,6 @@ def draw():
     text("P2", -10, 5)
     
     speed2 = PVector.fromAngle(radians(turn2))
-    speed2.mult(3)
     if tank2.x >= 1000 :
         tank2.x = 999
     elif tank2.x <= 0:
@@ -210,9 +208,9 @@ def draw():
     elif tank2.y <= 0:
         tank2.y = 1
     elif moveUp2 == True:
-        tank2.add(speed2)
+        tank2.add(speed2.mult(3))
     elif moveBack2 == True:
-        tank2.sub(speed2)
+        tank2.sub(speed2.mult(3))
     if turnCCW2 == True:
         turn2 -= 4
     elif turnCW2 == True:
