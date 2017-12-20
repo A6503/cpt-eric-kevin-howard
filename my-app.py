@@ -1,22 +1,9 @@
 homeScreen = True
-
+buttonColor = color(0, 200, 200)
+buttonColor2 = color(200, 200, 0)
 def setup():
     size(1000, 500)
     global img
-    global home
-    home = createGraphics(1000, 500)
-    home.beginDraw()
-    home.background(100)
-    home.fill(0, 255, 255)
-    home.noStroke()
-    home.rect(180, 10, 600, 120)
-    home.fill(0)
-    home.textSize(100)
-    home.text("Tank Game", 210, 100)
-    home.textSize(200)
-    home.text("Play", 290, 350)
-    home.endDraw()
-    
     img = createGraphics(1000, 500)
     img.beginDraw()
     img.background(255)
@@ -69,9 +56,27 @@ def draw():
     global homeScreen
     font = createFont("Ubuntu Mono Bold", 20)# Font
     if homeScreen == True:
-        background(home)
+        background(0)
+        global buttonColor
+        global buttonColor2
+        background(150)
+        noStroke()
+        fill(0)
+        textSize(100)
+        text("Tank Game", 250, 100)
+        fill(buttonColor)
+        rect(250, 180, 460, 220)
+        fill(0)
+        textSize(200)
+        text("Play", 270, 350)
+        fill(buttonColor2)
+        rect(20, 20, 150, 40)
+        fill(0)
+        textSize(24)
+        text("How to play", 25, 45)        
     else:
         background(img)
+        stroke(0)
         
     # TANK 1
     global speed
@@ -212,9 +217,20 @@ def draw():
         turn2 -= 4
     elif turnCW2 == True:
         turn2 += 4
+def mouseMoved():
+    global buttonColor
+    global buttonColor2
+    if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
+        buttonColor = color(55, 255, 255)
+    else:
+        buttonColor = color(0, 200, 200)
+    if mouseX >= 20 and mouseX <= 170 and mouseY >= 20 and mouseY <= 60:
+        buttonColor2 = color(255, 255, 55)
+    else:
+        buttonColor2 = color(200, 200, 0)
 def mouseClicked():
     global homeScreen
-    if mouseX <= 780 and mouseX >= 180 and mouseY <= 130 and mouseY >= 10:
+    if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
         homeScreen = False
 def keyPressed():
     # TANK 1
