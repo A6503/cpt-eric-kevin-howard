@@ -97,23 +97,28 @@ def draw():
         bullet.set(tank)
         bulletSpeed.set(speed.mult(5))
         global bulletTime
+        global breakTime
         bulletTime = 0
+        breakTime = 0
     else:
         global bulletTime
+        global breakTime
         bullet.add(bulletSpeed)
-        if get(int(bullet.x+10), int(bullet.y)) != -1:
-            
-            bulletSpeed.x *= -1
-        elif get(int(bullet.x-10), int(bullet.y)) != -1:
-            
-            bulletSpeed.x *= -1
-        if get(int(bullet.x), int(bullet.y+10)) != -1:
-            
-            bulletSpeed.y *= -1
-        elif get(int(bullet.x), int(bullet.y-10)) != -1:
-    
-            bulletSpeed.y *= -1
+        if breakTime >= 7:
+            if get(int(bullet.x+10), int(bullet.y)) != -1:
+                bulletSpeed.x *= -1
+                breakTime = 0
+            elif get(int(bullet.x-10), int(bullet.y)) != -1:
+                bulletSpeed.x *= -1
+                breakTime = 0
+            if get(int(bullet.x), int(bullet.y+10)) != -1:
+                bulletSpeed.y *= -1
+                breakTime = 0
+            elif get(int(bullet.x), int(bullet.y-10)) != -1:
+                bulletSpeed.y *= -1
+                breakTime = 0
         bulletTime += 1
+        breakTime += 1    
         if bulletTime >= 600:
             shot = False
     translate(tank.x, tank.y)
@@ -166,23 +171,28 @@ def draw():
         bullet2.set(tank2)
         bulletSpeed2.set(speed2.mult(5))
         global bulletTime2
+        global breakTime2
+        breakTime2 = 0
         bulletTime2 = 0
     else:
         global bulletTime2
+        global breakTime2
         bullet2.add(bulletSpeed2)
-        if get(int(bullet2.x+10), int(bullet2.y)) != -1:
-            
-            bulletSpeed2.x *= -1
-        elif get(int(bullet2.x-10), int(bullet2.y)) != -1:
-            
-            bulletSpeed2.x *= -1
-        if get(int(bullet2.x), int(bullet2.y+10)) != -1:
-            
-            bulletSpeed2.y *= -1
-        elif get(int(bullet2.x), int(bullet2.y-10)) != -1:
-    
-            bulletSpeed2.y *= -1
+        if breakTime2 >= 7:
+            if get(int(bullet2.x+10), int(bullet2.y)) != -1:
+                bulletSpeed2.x *= -1
+                breakTime2 = 0
+            elif get(int(bullet2.x-10), int(bullet2.y)) != -1:
+                bulletSpeed2.x *= -1
+                breakTime2 = 0
+            if get(int(bullet2.x), int(bullet2.y+10)) != -1:
+                bulletSpeed2.y *= -1
+                breakTime2 = 0
+            elif get(int(bullet2.x), int(bullet2.y-10)) != -1:
+                bulletSpeed2.y *= -1
+                breakTime2 = 0
         bulletTime2 += 1
+        breakTime2 += 1    
         if bulletTime2 >= 600:
             shot2 = False
 
