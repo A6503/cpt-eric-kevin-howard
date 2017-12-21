@@ -22,7 +22,7 @@ def setup():
     img.endDraw()
     
 # TANK 1
-tank = PVector(400, 400)
+tank = PVector(800, 200)
 turn = 0
 speed = PVector(0, 0)
 # Moving tank 1
@@ -31,7 +31,7 @@ moveBack = False
 turnCCW = False
 turnCW = False
 #Bullet
-bullet = PVector(400, 400)
+bullet = PVector(800, 200)
 shot = False
 frag = False
 bulletSpeed = PVector(0, 0)
@@ -95,7 +95,7 @@ def draw():
     ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
         bullet.set(tank)
-        bulletSpeed.set(speed)
+        bulletSpeed.set(speed.mult(5))
         global bulletTime
         bulletTime = 0
     else:
@@ -164,7 +164,7 @@ def draw():
     ellipse(bullet2.x, bullet2.y, 6, 6)
     if shot2 == False:
         bullet2.set(tank2)
-        bulletSpeed2.set(speed2)
+        bulletSpeed2.set(speed2.mult(5))
         global bulletTime2
         bulletTime2 = 0
     else:
