@@ -238,6 +238,24 @@ def mouseMoved():
         buttonColor2 = color(255, 255, 55)
     else:
         buttonColor2 = color(200, 200, 0)
+def mousePressed():
+    global buttonColor
+    global buttonColor2
+    if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
+        buttonColor = color(0, 155, 155)
+    if mouseX >= 20 and mouseX <= 170 and mouseY >= 20 and mouseY <= 60:
+        buttonColor2 = color(155, 155, 0)
+def mouseReleased():
+    global buttonColor
+    global buttonColor2
+    if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
+        buttonColor = color(55, 255, 255)
+    else:
+        buttonColor = color(0, 200, 200)
+    if mouseX >= 20 and mouseX <= 170 and mouseY >= 20 and mouseY <= 60:
+        buttonColor2 = color(255, 255, 55)
+    else:
+        buttonColor2 = color(200, 200, 0)
 def mouseClicked():
     global homeScreen
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
