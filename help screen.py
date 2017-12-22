@@ -9,7 +9,7 @@ def setup():
     img.beginDraw()
     img.background(255)
     img.fill(0, 0, 255)
-   
+    # obstacles on the map
     img.rect(100, 100, 100, 100)
     img.rect(500, 250, 100, 100)
     img.rect(300, 250, 50, 50)
@@ -65,6 +65,7 @@ def draw():
         noStroke()
         fill(0)
         textSize(40)
+        #title for game
         text("The Everlasting Unrest Between The Two", 200, 50)
         text("Armoured Terrestrial Mobility Machines", 220, 100)
         text("Equipped With Comically-Scaled Cannonballs", 170, 150)
@@ -78,6 +79,7 @@ def draw():
         fill(0)
         textSize(24)
         text("How to play", 25, 45)
+        #selecting between screens and controls on the screens
     elif helpScreen == True:
         background(100)
         text("player 1: arrow keys to move m to shoot", 100, 100)
@@ -106,6 +108,7 @@ def draw():
         global breakTime
         bulletTime = 0
         breakTime = 0
+    #bullets for tank 1
     else:
         global bulletTime
         global breakTime
@@ -128,6 +131,7 @@ def draw():
         if bulletTime >= 600:
             shot = False
     translate(tank.x, tank.y)
+    #rotation for tank 1
     rotate(radians(turn))
     
     fill(50, 50, 50)
@@ -247,8 +251,10 @@ def mouseMoved():
 def mouseClicked():
     global homeScreen
     global helpScreen
+    #moves to game screen
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
         homeScreen = False
+    #moves to instructions screen
     if mouseX <= 170 and mouseX >= 20 and mouseY >=20 and mouseY <= 60:
         helpScreen = True
         homeScreen = False
@@ -259,6 +265,7 @@ def keyPressed():
     global turnCCW
     global turnCW
     global shot
+    #controls for tank 1
     if key == "w":
         moveUp = True
         moveBack = False
@@ -279,6 +286,7 @@ def keyPressed():
     global turnCCW2
     global turnCW2
     global shot2
+    #controls for tank 2
     if keyCode == UP:
         moveUp2 = True
         moveBack2 = False
