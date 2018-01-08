@@ -83,8 +83,8 @@ def draw():
         #selecting between screens and controls on the screens
     elif helpScreen == True:
         background(100)
-        text("player 1: arrow keys to move m to shoot", 100, 100)
-        text("player 2: wasd to move Q to shoot", 100, 200)
+        text("player 1: Use WASD to move, and Q to shoot.", 100, 100)
+        text("player 2: Use the arrow keys to move, and space to shoot.", 100, 200)
     else:
         background(img)
         stroke(0)
