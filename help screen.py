@@ -56,7 +56,7 @@ def draw():
     global home
     global homeScreen
     global helpScreen
-    font = createFont("URW Bookman L Demi Bold", 20)# Font
+    font = createFont("Ubuntu Mono Bold", 20)# Font
     #different settings for screens
     if homeScreen == True:
         background(0)
@@ -65,10 +65,11 @@ def draw():
         background(150)
         noStroke()
         fill(0)
-
-        textSize(120)
+        textSize(40)
         #title for game
-        text("GAME OF TANK", 200, 100)
+        text("GAME", 200, 50)
+        text("OF", 220, 100)
+        text("TANK", 170, 150)
         fill(buttonColor)
         rect(250, 180, 460, 220)
         fill(0)
@@ -85,7 +86,10 @@ def draw():
         text("player 1: Use WASD to move, and Q to shoot.", 100, 100)
         text("player 2: Use the arrow keys to move, and space to shoot.", 100, 200)
         fill(255, 0, 0)
-        ellipse(30, 30, 20, 20)
+        rect(0, 0, 30, 30)
+        fill(0)
+        textSize(30)
+        text("X", 10, 30)
     else:
         background(img)
         stroke(0)
@@ -135,7 +139,6 @@ def draw():
     translate(tank.x, tank.y)
     #rotation for tank 1
     rotate(radians(turn))
-    
     fill(50, 50, 50)
     rect(-25, -20, 50, 40)
     rect(-25, -15, 50, 30)
@@ -244,6 +247,8 @@ def draw():
 def mouseMoved():
     global buttonColor
     global buttonColor2
+    global helpScreen
+    global homeScreen
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
         buttonColor = color(55, 255, 255)
     else:
@@ -262,6 +267,9 @@ def mouseClicked():
     if mouseX <= 170 and mouseX >= 20 and mouseY >=20 and mouseY <= 60:
         helpScreen = True
         homeScreen = False
+    if helpScreen == True and mouseX <= 30 and mouseY <= 30:
+        helpScreen = False
+        homeScreen = True
 def keyPressed():
     # TANK 1
     global moveUp
