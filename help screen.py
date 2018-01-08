@@ -69,7 +69,7 @@ def draw():
         #title for game
         text("GAME", 200, 50)
         text("OF", 220, 100)
-        text("TANK", 170, 150)
+        text("TANKS", 170, 150)
         fill(buttonColor)
         rect(250, 180, 460, 220)
         fill(0)
