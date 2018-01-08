@@ -67,9 +67,7 @@ def draw():
         fill(0)
         textSize(40)
         #title for game
-        text("The Everlasting Unrest Between The Two", 200, 50)
-        text("Armoured Terrestrial Mobility Machines", 220, 100)
-        text("Equipped With Comically-Scaled Cannonballs", 170, 150)
+        text("Game of Tank", 200, 50)
         fill(buttonColor)
         rect(250, 180, 460, 220)
         fill(0)
