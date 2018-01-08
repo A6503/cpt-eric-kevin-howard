@@ -56,7 +56,7 @@ def draw():
     global home
     global homeScreen
     global helpScreen
-    font = createFont("URW Bookman L Demi Bold", 20)# Font
+    font = createFont("Ubuntu Mono Bold", 20)# Font
     #different settings for screens
     if homeScreen == True:
         background(0)
@@ -82,9 +82,11 @@ def draw():
         text("How to play", 25, 45)
         #selecting between screens and controls on the screens
     elif helpScreen == True:
-        background(100)
+        background(255)
         text("player 1: Use WASD to move, and Q to shoot.", 100, 100)
         text("player 2: Use the arrow keys to move, and space to shoot.", 100, 200)
+        fill(255, 0, 0)
+        ellipse(30, 30, 20, 20)
     else:
         background(img)
         stroke(0)
