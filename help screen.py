@@ -56,7 +56,7 @@ def draw():
     global home
     global homeScreen
     global helpScreen
-    font = createFont("Ubuntu Mono Bold", 20)# Font
+    font = createFont("URW Bookman L Demi Bold", 20)# Font
     #different settings for screens
     if homeScreen == True:
         background(0)
