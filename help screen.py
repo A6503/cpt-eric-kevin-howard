@@ -67,7 +67,9 @@ def draw():
         fill(0)
         textSize(40)
         #title for game
-        text("Game of Tank", 200, 50)
+        text("GAME", 200, 50)
+        text("OF", 220, 100)
+        text("TANK", 170, 150)
         fill(buttonColor)
         rect(250, 180, 460, 220)
         fill(0)
