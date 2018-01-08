@@ -1,6 +1,7 @@
 homeScreen = True
 buttonColor = color(0, 200, 200)
 buttonColor2 = color(200, 200, 0)
+buttonColor3 = color(255, 0, 0)
 helpScreen = False
 def setup():
     size(1000, 500)
@@ -63,6 +64,7 @@ def draw():
         background(0)
         global buttonColor
         global buttonColor2
+        global buttonColor3
         background(150)
         noStroke()
         fill(0)
@@ -87,7 +89,7 @@ def draw():
         background(255)
         text("player 1: Use WASD to move, and Q to shoot.", 100, 100)
         text("player 2: Use the arrow keys to move, and space to shoot.", 100, 200)
-        fill(255, 0, 0)
+        fill(buttonColor3)
         rect(0, 0, 30, 30)
         fill(0)
         textSize(30)
@@ -249,6 +251,7 @@ def draw():
 def mouseMoved():
     global buttonColor
     global buttonColor2
+    global buttonColor3
     global helpScreen
     global homeScreen
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
@@ -259,6 +262,10 @@ def mouseMoved():
         buttonColor2 = color(255, 255, 55)
     else:
         buttonColor2 = color(200, 200, 0)
+    if mouseX <= 30 and mouseY <= 30:
+        buttonColor3 = color(255, 100, 100)
+    else:
+        buttonColor3 = color(255, 0, 0)
 def mouseClicked():
     global homeScreen
     global helpScreen
