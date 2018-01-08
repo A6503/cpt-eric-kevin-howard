@@ -56,8 +56,8 @@ def draw():
     global home
     global homeScreen
     global helpScreen
-    font = createFont("URW Bookman L Demi Bold", 20)# Font1
-    font2 = createFont("Ubuntu Mono Bold", 20)# Font2
+    font = createFont("Ubuntu Mono Bold", 20)# PrimaryFont
+    font2 = createFont("URW Bookman L Demi Bold", 20)# Decorative Font
     #different settings for screens
     if homeScreen == True:
         background(0)
@@ -66,7 +66,7 @@ def draw():
         background(150)
         noStroke()
         fill(0)
-        textFont(font)
+        textFont(font2)
         textSize(120)
         #title for game
         text("TANK", 200, 100)
@@ -74,7 +74,7 @@ def draw():
         fill(buttonColor)
         rect(250, 210, 480, 220)
         fill(0)
-        textFont(font2)
+        textFont(font)
         textSize(200)
         text("PLAY", 290, 380)
         fill(buttonColor2)
