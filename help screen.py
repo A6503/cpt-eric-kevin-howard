@@ -104,7 +104,7 @@ def draw():
     ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
         bullet.set(tank)
-        bulletSpeed.set(speed.mult(5))
+        bulletSpeed.set(speed.mult(6))
         global bulletTime
         global breakTime
         bulletTime = 0
@@ -162,6 +162,7 @@ def draw():
         turn -= 4
     elif turnCW == True:
         turn += 4
+    speed = PVector.fromAngle(radians(turn))
     resetMatrix()
 #######################################################################################    
 #######################################################################################    
@@ -180,7 +181,7 @@ def draw():
     ellipse(bullet2.x, bullet2.y, 6, 6)
     if shot2 == False:
         bullet2.set(tank2)
-        bulletSpeed2.set(speed2.mult(5))
+        bulletSpeed2.set(speed2.mult(6))
         global bulletTime2
         global breakTime2
         breakTime2 = 0
@@ -238,6 +239,7 @@ def draw():
         turn2 -= 4
     elif turnCW2 == True:
         turn2 += 4
+    speed2 = PVector.fromAngle(radians(turn2))
 def mouseMoved():
     global buttonColor
     global buttonColor2
