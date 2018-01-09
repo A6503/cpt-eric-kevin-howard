@@ -71,7 +71,7 @@ def draw():
         fill(0)
         textFont(font2)
         textSize(120)
-        #title for game
+        #main title
         text("TANK", 200, 100)
         text("GAME", 400, 200)
         fill(buttonColor)
