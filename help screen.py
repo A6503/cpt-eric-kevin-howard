@@ -1,3 +1,4 @@
+#screen and button variables
 homeScreen = True
 buttonColor = color(0, 200, 200)
 buttonColor2 = color(200, 200, 0)
@@ -16,8 +17,7 @@ def setup():
     img.rect(300, 250, 50, 50)
     img.rect(750, 250, 50, 50)
     img.rect(600, 100, 50, 50)
-    img.rect(850, 380, 50, 50)
-           
+    img.rect(850, 380, 50, 50)      
     img.rect(100, 350, 75, 75)
     img.rect(850, 100, 50, 50)
     img.rect(325, 100, 60, 60)
@@ -94,6 +94,7 @@ def draw():
         fill(0)
         textSize(30)
         text("X", 10, 30)
+    #main game screen
     else:
         background(img)
         stroke(0)
@@ -229,7 +230,7 @@ def draw():
     fill(255, 0, 100)
     textFont(font)
     text("P2", -10, 5)
-    
+    #turning tank 2
     speed2 = PVector.fromAngle(radians(turn2))
     if tank2.x >= 1000 :
         tank2.x = 999
@@ -254,6 +255,7 @@ def mouseMoved():
     global buttonColor3
     global helpScreen
     global homeScreen
+   #makes the buttons shange when mouse hovers over
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
         buttonColor = color(55, 255, 255)
     else:
@@ -276,6 +278,7 @@ def mouseClicked():
     if mouseX <= 170 and mouseX >= 20 and mouseY >=20 and mouseY <= 60:
         helpScreen = True
         homeScreen = False
+    #moves back to home screen from help screen
     if helpScreen == True and mouseX <= 30 and mouseY <= 30:
         helpScreen = False
         homeScreen = True
