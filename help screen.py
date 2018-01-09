@@ -5,6 +5,7 @@ buttonColor2 = color(200, 200, 0)
 buttonColor3 = color(255, 0, 0)
 helpScreen = False
 def setup():
+    #main screen setup
     size(1000, 500)
     global img
     img = createGraphics(1000, 500)
