@@ -100,7 +100,7 @@ def draw():
         background(img)
         stroke(0)
         
-    # TANK 1
+    # TANK 1 Global
     global speed
     global turn
     global tank
@@ -111,6 +111,75 @@ def draw():
     global bullet
     global shot
     global frag
+    # TANK 2 Global
+    global speed2
+    global turn2
+    global tank2
+    global moveUp2
+    global moveBack2
+    global turnCCW2
+    global turnCW2
+    global bullet2
+    global shot2
+    global frag2
+    fill(0)
+    b = 38.65980825
+    # Edge detection
+    edgeBupper = PVector.fromAngle(radians(turn+180+b)).mult(33)
+    edgeBlower = PVector.fromAngle(radians(turn+180-b)).mult(33)
+    edgeFupper = PVector.fromAngle(radians(turn-b)).mult(33)
+    edgeFlower = PVector.fromAngle(radians(turn+b)).mult(33)
+
+    speed = PVector.fromAngle(radians(turn))
+    noFill()
+    ellipse(tank.x+speed.x*24, tank.y+speed.y*24, 5, 5)
+    ellipse(tank.x+edgeBupper.x, tank.y+edgeBupper.y, 5, 5)
+    ellipse(tank.x+edgeBlower.x, tank.y+edgeBlower.y, 5, 5)
+    ellipse(tank.x+edgeFupper.x, tank.y+edgeFupper.y, 5, 5)
+    ellipse(tank.x+edgeFlower.x, tank.y+edgeFlower.y, 5, 5)
+    if get(int(tank.x+speed.x*9),int(tank.y+speed.y*9)) != -1:
+        moveUp = False
+    if get(int(tank.x+edgeBupper.x),int(tank.y+edgeBupper.y)) != -1:
+        moveBack = False
+        turn -= 5
+    if get(int(tank.x+edgeBlower.x),int(tank.y+edgeBlower.y)) != -1:
+        moveBack = False
+        turn += 5
+    if get(int(tank.x+edgeFupper.x),int(tank.y+edgeFupper.y)) != -1:
+        moveUp = False
+        turn += 5
+    if get(int(tank.x+edgeFlower.x),int(tank.y+edgeFlower.y)) != -1:
+        moveUp = False
+        turn -= 5
+        # Edge detection again lol
+    edgeBupper2 = PVector.fromAngle(radians(turn2+180+b)).mult(33)
+    edgeBlower2 = PVector.fromAngle(radians(turn2+180-b)).mult(33)
+    edgeFupper2 = PVector.fromAngle(radians(turn2-b)).mult(33)
+    edgeFlower2 = PVector.fromAngle(radians(turn2+b)).mult(33)
+
+    speed2 = PVector.fromAngle(radians(turn2))
+    noFill()
+    ellipse(tank2.x+speed2.x*24, tank2.y+speed2.y*24, 5, 5)
+    ellipse(tank2.x+edgeBupper2.x, tank2.y+edgeBupper2.y, 5, 5)
+    ellipse(tank2.x+edgeBlower2.x, tank2.y+edgeBlower2.y, 5, 5)
+    ellipse(tank2.x+edgeFupper2.x, tank2.y+edgeFupper2.y, 5, 5)
+    ellipse(tank2.x+edgeFlower2.x, tank2.y+edgeFlower2.y, 5, 5)
+    if get(int(tank2.x+speed2.x*9),int(tank2.y+speed2.y*9)) != -1:
+        moveUp2 = False
+    if get(int(tank2.x+edgeBupper2.x),int(tank2.y+edgeBupper2.y)) != -1:
+        moveBack2 = False
+        turn2 -= 5
+    if get(int(tank2.x+edgeBlower2.x),int(tank2.y+edgeBlower2.y)) != -1:
+        moveBack2 = False
+        turn2 += 5
+    if get(int(tank2.x+edgeFupper2.x),int(tank2.y+edgeFupper2.y)) != -1:
+        moveUp2 = False
+        turn2 += 5
+    if get(int(tank2.x+edgeFlower2.x),int(tank2.y+edgeFlower2.y)) != -1:
+        moveUp2 = False
+        turn2 -= 5
+        
+    # TANK 1
     fill(0)
     ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
@@ -177,16 +246,6 @@ def draw():
 #######################################################################################    
 #######################################################################################    
     # TANK 2
-    global speed2
-    global turn2
-    global tank2
-    global moveUp2
-    global moveBack2
-    global turnCCW2
-    global turnCW2
-    global bullet2
-    global shot2
-    global frag2
     fill(0)
     ellipse(bullet2.x, bullet2.y, 6, 6)
     if shot2 == False:
