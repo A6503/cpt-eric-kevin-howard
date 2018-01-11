@@ -1,4 +1,5 @@
 #screen and button variables
+time = 0
 homeScreen = True
 buttonColor = color(0, 200, 200)
 buttonColor2 = color(200, 200, 0)
@@ -26,7 +27,7 @@ def setup():
     
 # TANK 1
 tank = PVector(800, 200)
-turn = 0
+turn = 180
 speed = PVector(0, 0)
 # Moving tank 1
 moveUp = False
@@ -39,7 +40,7 @@ shot = False
 frag = False
 bulletSpeed = PVector(0, 0)
 # TANK 2
-tank2 = PVector(200, 200)
+tank2 = PVector(400, 200)
 turn2 = 0
 speed2 = PVector(0,0)
 # Moving tank 2
@@ -48,7 +49,7 @@ moveBack2 = False
 turnCCW2 = False
 turnCW2 = False
 #Bullet 2
-bullet2 = PVector(200, 200)
+bullet2 = PVector(400, 200)
 shot2 = False
 frag2 = False
 bulletSpeed2 = PVector(0,0)
@@ -57,10 +58,34 @@ def draw():
     global img
     global home
     global homeScreen
-    global helpScreen
+    global helpScreen    
+    global time
+    # TANK 1 Global
+    global speed
+    global turn
+    global tank
+    global moveUp
+    global moveBack
+    global turnCCW
+    global turnCW
+    global bullet
+    global shot
+    global frag
+    # TANK 2 Global
+    global speed2
+    global turn2
+    global tank2
+    global moveUp2
+    global moveBack2
+    global turnCCW2
+    global turnCW2
+    global bullet2
+    global shot2
+    global frag2
+    
     font = createFont("Ubuntu Mono Bold", 20)# PrimaryFont
     font2 = createFont("URW Bookman L Demi Bold", 20)# Decorative Font
-    #different settings for screens
+    # Different settings for screens
     if homeScreen == True:
         background(0)
         global buttonColor
@@ -85,7 +110,11 @@ def draw():
         fill(0)
         textSize(24)
         text("How to play", 25, 45)
-        #selecting between screens and controls on the screens
+        # Selecting between screens and controls on the screens
+        
+        # Tanks stay still on home screen
+        tank.add(speed.mult(3))
+        tank2.add(speed2.mult(3))
     elif helpScreen == True:
         background(255)
         text("player 1: Use WASD to move, and Q to shoot.", 100, 100)
@@ -95,92 +124,66 @@ def draw():
         fill(0)
         textSize(30)
         text("X", 10, 30)
-    #main game screen
+    # Main game screen
     else:
         background(img)
         stroke(0)
         
-    # TANK 1 Global
-    global speed
-    global turn
-    global tank
-    global moveUp
-    global moveBack
-    global turnCCW
-    global turnCW
-    global bullet
-    global shot
-    global frag
-    # TANK 2 Global
-    global speed2
-    global turn2
-    global tank2
-    global moveUp2
-    global moveBack2
-    global turnCCW2
-    global turnCW2
-    global bullet2
-    global shot2
-    global frag2
-    fill(0)
-    b = 38.65980825
+
+  
+    b = 38.65980825 # IMPORTANT NUMBER!!!
     # Edge detection
-    edgeBupper = PVector.fromAngle(radians(turn+180+b)).mult(33)
-    edgeBlower = PVector.fromAngle(radians(turn+180-b)).mult(33)
-    edgeFupper = PVector.fromAngle(radians(turn-b)).mult(33)
-    edgeFlower = PVector.fromAngle(radians(turn+b)).mult(33)
+    UL = PVector.fromAngle(radians(turn+180+b)).mult(33) # Upper Left corner
+    LL = PVector.fromAngle(radians(turn+180-b)).mult(33) # Lower Left corner
+    UR = PVector.fromAngle(radians(turn-b)).mult(33) # Upper Right corner
+    LR = PVector.fromAngle(radians(turn+b)).mult(33) # Lower rRght corner
 
     speed = PVector.fromAngle(radians(turn))
+    speed.mult(3)
     noFill()
-    ellipse(tank.x+speed.x*24, tank.y+speed.y*24, 5, 5)
-    ellipse(tank.x+edgeBupper.x, tank.y+edgeBupper.y, 5, 5)
-    ellipse(tank.x+edgeBlower.x, tank.y+edgeBlower.y, 5, 5)
-    ellipse(tank.x+edgeFupper.x, tank.y+edgeFupper.y, 5, 5)
-    ellipse(tank.x+edgeFlower.x, tank.y+edgeFlower.y, 5, 5)
-    if get(int(tank.x+speed.x*9),int(tank.y+speed.y*9)) != -1:
-        moveUp = False
-    if get(int(tank.x+edgeBupper.x),int(tank.y+edgeBupper.y)) != -1:
-        moveBack = False
-        turn -= 5
-    if get(int(tank.x+edgeBlower.x),int(tank.y+edgeBlower.y)) != -1:
-        moveBack = False
-        turn += 5
-    if get(int(tank.x+edgeFupper.x),int(tank.y+edgeFupper.y)) != -1:
-        moveUp = False
-        turn += 5
-    if get(int(tank.x+edgeFlower.x),int(tank.y+edgeFlower.y)) != -1:
-        moveUp = False
-        turn -= 5
-        # Edge detection again lol
-    edgeBupper2 = PVector.fromAngle(radians(turn2+180+b)).mult(33)
-    edgeBlower2 = PVector.fromAngle(radians(turn2+180-b)).mult(33)
-    edgeFupper2 = PVector.fromAngle(radians(turn2-b)).mult(33)
-    edgeFlower2 = PVector.fromAngle(radians(turn2+b)).mult(33)
+
+    if get(int(tank.x+speed.x*14),int(tank.y+speed.y*14)) != -1:
+        tank.sub(speed)
+    if get(int(tank.x+UL.x),int(tank.y+UL.y)) != -1:
+        tank.add(speed)
+        turnCCW = False
+    elif get(int(tank.x+LL.x),int(tank.y+LL.y)) != -1:
+        tank.add(speed)
+        turnCW = False
+    if get(int(tank.x+UR.x),int(tank.y+UR.y)) != -1:
+        tank.sub(speed)
+        turnCCW = False
+    elif get(int(tank.x+LR.x),int(tank.y+LR.y)) != -1:
+        tank.sub(speed)
+        turnCW = False
+    # Edge detection for player 2
+    UL2 = PVector.fromAngle(radians(turn2+180+b)).mult(33)
+    LL2 = PVector.fromAngle(radians(turn2+180-b)).mult(33)
+    UR2 = PVector.fromAngle(radians(turn2-b)).mult(33)
+    LR2 = PVector.fromAngle(radians(turn2+b)).mult(33)
 
     speed2 = PVector.fromAngle(radians(turn2))
     noFill()
-    ellipse(tank2.x+speed2.x*24, tank2.y+speed2.y*24, 5, 5)
-    ellipse(tank2.x+edgeBupper2.x, tank2.y+edgeBupper2.y, 5, 5)
-    ellipse(tank2.x+edgeBlower2.x, tank2.y+edgeBlower2.y, 5, 5)
-    ellipse(tank2.x+edgeFupper2.x, tank2.y+edgeFupper2.y, 5, 5)
-    ellipse(tank2.x+edgeFlower2.x, tank2.y+edgeFlower2.y, 5, 5)
-    if get(int(tank2.x+speed2.x*9),int(tank2.y+speed2.y*9)) != -1:
-        moveUp2 = False
-    if get(int(tank2.x+edgeBupper2.x),int(tank2.y+edgeBupper2.y)) != -1:
-        moveBack2 = False
-        turn2 -= 5
-    if get(int(tank2.x+edgeBlower2.x),int(tank2.y+edgeBlower2.y)) != -1:
-        moveBack2 = False
-        turn2 += 5
-    if get(int(tank2.x+edgeFupper2.x),int(tank2.y+edgeFupper2.y)) != -1:
-        moveUp2 = False
-        turn2 += 5
-    if get(int(tank2.x+edgeFlower2.x),int(tank2.y+edgeFlower2.y)) != -1:
-        moveUp2 = False
-        turn2 -= 5
+
+    speed2.mult(3)
+    if get(int(tank2.x+speed2.x*14),int(tank2.y+speed2.y*14)) != -1:
+        tank2.sub(speed2)
+    if get(int(tank2.x+UL2.x),int(tank2.y+UL2.y)) != -1:
+        tank2.add(speed2)
+        turnCCW2 = False
+    elif get(int(tank2.x+LL2.x),int(tank2.y+LL2.y)) != -1:
+        tank2.add(speed2)
+        turnCW2 = False
+    if get(int(tank2.x+UR2.x),int(tank2.y+UR2.y)) != -1:
+        tank2.sub(speed2)
+        turnCCW2 = False
+    elif get(int(tank2.x+LR2.x),int(tank2.y+LR2.y)) != -1:
+        tank2.sub(speed2)
+        turnCW2 = False
         
     # TANK 1
     fill(0)
+    speed = PVector.fromAngle(radians(turn))
     ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
         bullet.set(tank)
@@ -189,7 +192,7 @@ def draw():
         global breakTime
         bulletTime = 0
         breakTime = 0
-    #bullets for tank 1
+    # Bullets for tank 1
     else:
         global bulletTime
         global breakTime
@@ -212,7 +215,7 @@ def draw():
         if bulletTime >= 600:
             shot = False
     translate(tank.x, tank.y)
-    #rotation for tank 1
+    # Rotation for tank 1
     rotate(radians(turn))
     fill(50, 50, 50)
     rect(-25, -20, 50, 40)
@@ -247,6 +250,7 @@ def draw():
 #######################################################################################    
     # TANK 2
     fill(0)
+    speed2 = PVector.fromAngle(radians(turn2))
     ellipse(bullet2.x, bullet2.y, 6, 6)
     if shot2 == False:
         bullet2.set(tank2)
@@ -309,6 +313,54 @@ def draw():
     elif turnCW2 == True:
         turn2 += 4
     speed2 = PVector.fromAngle(radians(turn2))
+    if bullet.x-tank2.x <= 20 and bullet.x-tank2.x >= -20 and bullet.y-tank2.y <= 20 and bullet.y-tank2.y >= -20:
+        if time <= 300:
+            bulletSpeed.set(0, 0)
+            fill(255, 255, 0)
+            ellipse(tank2.x, tank2.y, time, time)
+            time+=3
+        else:
+            tank2.set(random(800), random(300))
+            turn2 = random(360)
+            turn = random(360)
+            tank.set(random(800), random(300))
+            shot = False
+    elif bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
+        if time <= 300:
+            bulletSpeed.set(0, 0)
+            fill(255, 255, 0)
+            ellipse(tank.x, tank.y, time, time)
+            time+=3
+        else:
+            tank2.set(random(800), random(300))
+            turn2 = random(360)
+            turn = random(360)
+            tank.set(random(800), random(300))
+            shot = False
+    if bullet2.x-tank.x <= 20 and bullet2.x-tank.x >= -20 and bullet2.y-tank.y <= 20 and bullet2.y-tank.y >= -20:
+        if time <= 300:
+            bulletSpeed.set(0, 0)
+            fill(255, 255, 0)
+            ellipse(tank.x, tank.y, time, time)
+            time+=3
+        else:
+            tank2.set(random(800), random(300))
+            turn2 = random(360)
+            turn = random(360)
+            tank.set(random(800), random(300))
+            shot = False
+    elif bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
+        if time <= 300:
+            bulletSpeed2.set(0, 0)
+            fill(255, 255, 0)
+            ellipse(tank2.x, tank2.y, time, time)
+            time+=3
+        else:
+            tank2.set(random(800), random(300))
+            turn2 = random(360)
+            turn = random(360)
+            tank.set(random(800), random(300))
+            shot2 = False
 def mouseMoved():
     global buttonColor
     global buttonColor2
