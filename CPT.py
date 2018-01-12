@@ -1,5 +1,5 @@
 #screen and button variables
-time = 0
+time = 50
 homeScreen = True
 buttonColor = color(0, 200, 200)
 buttonColor2 = color(200, 200, 0)
@@ -319,53 +319,88 @@ def draw():
     resetMatrix()
     # Bullet Kills
     if bullet.x-tank2.x <= 20 and bullet.x-tank2.x >= -20 and bullet.y-tank2.y <= 20 and bullet.y-tank2.y >= -20:
-        if time <= 300:
+        if time <= 150:
             bulletSpeed.set(0, 0)
+            noStroke()
             fill(255, 255, 0)
             ellipse(tank2.x, tank2.y, time, time)
-            time+=3
+            time+=4
+        elif time <= 250:
+            noStroke()
+            fill(255, 255, 0, 255-(time-150))
+            ellipse(tank2.x, tank2.y, time, time)
+            time+=4
         else:
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
             tank.set(random(800), random(300))
             shot = False
+            shot2 = False
+            time = 50
+            
     elif bulletTime >= 60 and bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
-        if time <= 300:
+        if time <= 150:
             bulletSpeed.set(0, 0)
+            noStroke()
             fill(255, 255, 0)
             ellipse(tank.x, tank.y, time, time)
-            time+=3
+            time+=4
+        elif time <= 250:
+            noStroke()
+            fill(255, 255, 0, 255-(time-150))
+            ellipse(tank.x, tank.y, time, time)
+            time+=4
         else:
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
             tank.set(random(800), random(300))
             shot = False
+            shot2 = False
+            time = 50
+
     if bullet2.x-tank.x <= 20 and bullet2.x-tank.x >= -20 and bullet2.y-tank.y <= 20 and bullet2.y-tank.y >= -20:
-        if time <= 300:
-            bulletSpeed.set(0, 0)
+        if time <= 150:
+            bulletSpeed2.set(0, 0)
+            noStroke()
             fill(255, 255, 0)
             ellipse(tank.x, tank.y, time, time)
-            time+=3
-        else:
-            tank2.set(random(800), random(300))
-            turn2 = random(360)
-            turn = random(360)
-            tank.set(random(800), random(300))
-            shot = False
-    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
-        if time <= 300:
-            bulletSpeed2.set(0, 0)
-            fill(255, 255, 0)
-            ellipse(tank2.x, tank2.y, time, time)
-            time+=3
+            time+=4
+        elif time <= 250:
+            noStroke()
+            fill(255, 255, 0, 255-(time-150))
+            ellipse(tank.x, tank.y, time, time)
+            time+=4
         else:
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
             tank.set(random(800), random(300))
             shot2 = False
+            shot = False
+            time = 50
+            
+    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
+        if time <= 150:
+            bulletSpeed2.set(0, 0)
+            noStroke()
+            fill(255, 255, 0)
+            ellipse(tank2.x, tank2.y, time, time)
+            time+=4
+        elif time <= 250:
+            noStroke()
+            fill(255, 255, 0, 255-(time-150))
+            ellipse(tank2.x, tank2.y, time, time)
+            time+=4
+        else:
+            tank2.set(random(800), random(300))
+            turn2 = random(360)
+            turn = random(360)
+            tank.set(random(800), random(300))
+            shot2 = False
+            shot = False
+            time = 50
 def mouseMoved():
     global buttonColor
     global buttonColor2
