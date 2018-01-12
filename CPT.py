@@ -313,6 +313,9 @@ def draw():
     elif turnCW2 == True:
         turn2 += 4
     speed2 = PVector.fromAngle(radians(turn2))
+    
+    resetMatrix()
+    # Bullet Kills
     if bullet.x-tank2.x <= 20 and bullet.x-tank2.x >= -20 and bullet.y-tank2.y <= 20 and bullet.y-tank2.y >= -20:
         if time <= 300:
             bulletSpeed.set(0, 0)
@@ -325,7 +328,7 @@ def draw():
             turn = random(360)
             tank.set(random(800), random(300))
             shot = False
-    elif bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
+    elif bulletTime >= 60 and bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
         if time <= 300:
             bulletSpeed.set(0, 0)
             fill(255, 255, 0)
@@ -349,7 +352,7 @@ def draw():
             turn = random(360)
             tank.set(random(800), random(300))
             shot = False
-    elif bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
+    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
         if time <= 300:
             bulletSpeed2.set(0, 0)
             fill(255, 255, 0)
