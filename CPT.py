@@ -130,7 +130,70 @@ def draw():
         stroke(0)
         
 
-  
+        # Bullets for tank 1
+    fill(0)
+    speed = PVector.fromAngle(radians(turn))
+    ellipse(bullet.x, bullet.y, 6, 6)
+    if shot == False:
+        bullet.set(tank)
+        bulletSpeed.set(speed.mult(6))
+        global bulletTime
+        global breakTime
+        bulletTime = 0
+        breakTime = 0
+    else:
+        global bulletTime
+        global breakTime
+        bullet.add(bulletSpeed)
+        if breakTime >= 7:
+            if get(int(bullet.x+10), int(bullet.y)) != -1:
+                bulletSpeed.x *= -1
+                breakTime = 0
+            elif get(int(bullet.x-10), int(bullet.y)) != -1:
+                bulletSpeed.x *= -1
+                breakTime = 0
+            if get(int(bullet.x), int(bullet.y+10)) != -1:
+                bulletSpeed.y *= -1
+                breakTime = 0
+            elif get(int(bullet.x), int(bullet.y-10)) != -1:
+                bulletSpeed.y *= -1
+                breakTime = 0
+        bulletTime += 1
+        breakTime += 1    
+        if bulletTime >= 600:
+            shot = False
+    # Bullets for tank 2
+    fill(0)
+    speed2 = PVector.fromAngle(radians(turn2))
+    ellipse(bullet2.x, bullet2.y, 6, 6)
+    if shot2 == False:
+        bullet2.set(tank2)
+        bulletSpeed2.set(speed2.mult(6))
+        global bulletTime2
+        global breakTime2
+        breakTime2 = 0
+        bulletTime2 = 0
+    else:
+        global bulletTime2
+        global breakTime2
+        bullet2.add(bulletSpeed2)
+        if breakTime2 >= 7:
+            if get(int(bullet2.x+10), int(bullet2.y)) != -1:
+                bulletSpeed2.x *= -1
+                breakTime2 = 0
+            elif get(int(bullet2.x-10), int(bullet2.y)) != -1:
+                bulletSpeed2.x *= -1
+                breakTime2 = 0
+            if get(int(bullet2.x), int(bullet2.y+10)) != -1:
+                bulletSpeed2.y *= -1
+                breakTime2 = 0
+            elif get(int(bullet2.x), int(bullet2.y-10)) != -1:
+                bulletSpeed2.y *= -1
+                breakTime2 = 0
+        bulletTime2 += 1
+        breakTime2 += 1    
+        if bulletTime2 >= 600:
+            shot2 = False
     b = 38.65980825 # IMPORTANT NUMBER!!!
     # Edge detection
     UL = PVector.fromAngle(radians(turn+180+b)).mult(33) # Upper Left corner
@@ -182,41 +245,9 @@ def draw():
         turnCW2 = False
         
     # TANK 1
-    fill(0)
-    speed = PVector.fromAngle(radians(turn))
-    ellipse(bullet.x, bullet.y, 6, 6)
-    if shot == False:
-        bullet.set(tank)
-        bulletSpeed.set(speed.mult(6))
-        global bulletTime
-        global breakTime
-        bulletTime = 0
-        breakTime = 0
-    # Bullets for tank 1
-    else:
-        global bulletTime
-        global breakTime
-        bullet.add(bulletSpeed)
-        if breakTime >= 7:
-            if get(int(bullet.x+10), int(bullet.y)) != -1:
-                bulletSpeed.x *= -1
-                breakTime = 0
-            elif get(int(bullet.x-10), int(bullet.y)) != -1:
-                bulletSpeed.x *= -1
-                breakTime = 0
-            if get(int(bullet.x), int(bullet.y+10)) != -1:
-                bulletSpeed.y *= -1
-                breakTime = 0
-            elif get(int(bullet.x), int(bullet.y-10)) != -1:
-                bulletSpeed.y *= -1
-                breakTime = 0
-        bulletTime += 1
-        breakTime += 1    
-        if bulletTime >= 600:
-            shot = False
     translate(tank.x, tank.y)
-    # Rotation for tank 1
     rotate(radians(turn))
+    
     fill(50, 50, 50)
     rect(-25, -20, 50, 40)
     rect(-25, -15, 50, 30)
@@ -227,7 +258,9 @@ def draw():
     fill(0, 255, 100)
     textFont(font)
     text("P1", -10, 5)
+    #Turning Tank 1
     speed = PVector.fromAngle(radians(turn))
+    # Tank 1 movement
     if tank.x >= 1000 :
         tank.x = 999
     elif tank.x <= 0:
@@ -247,40 +280,8 @@ def draw():
     speed = PVector.fromAngle(radians(turn))
     resetMatrix()
 #######################################################################################    
-#######################################################################################    
-    # TANK 2
-    fill(0)
-    speed2 = PVector.fromAngle(radians(turn2))
-    ellipse(bullet2.x, bullet2.y, 6, 6)
-    if shot2 == False:
-        bullet2.set(tank2)
-        bulletSpeed2.set(speed2.mult(6))
-        global bulletTime2
-        global breakTime2
-        breakTime2 = 0
-        bulletTime2 = 0
-    else:
-        global bulletTime2
-        global breakTime2
-        bullet2.add(bulletSpeed2)
-        if breakTime2 >= 7:
-            if get(int(bullet2.x+10), int(bullet2.y)) != -1:
-                bulletSpeed2.x *= -1
-                breakTime2 = 0
-            elif get(int(bullet2.x-10), int(bullet2.y)) != -1:
-                bulletSpeed2.x *= -1
-                breakTime2 = 0
-            if get(int(bullet2.x), int(bullet2.y+10)) != -1:
-                bulletSpeed2.y *= -1
-                breakTime2 = 0
-            elif get(int(bullet2.x), int(bullet2.y-10)) != -1:
-                bulletSpeed2.y *= -1
-                breakTime2 = 0
-        bulletTime2 += 1
-        breakTime2 += 1    
-        if bulletTime2 >= 600:
-            shot2 = False
 
+    # TANK 2
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
     
@@ -294,8 +295,9 @@ def draw():
     fill(255, 0, 100)
     textFont(font)
     text("P2", -10, 5)
-    #turning tank 2
+    # Turning tank 2
     speed2 = PVector.fromAngle(radians(turn2))
+    # Tank 2 movement
     if tank2.x >= 1000 :
         tank2.x = 999
     elif tank2.x <= 0:
