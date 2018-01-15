@@ -66,6 +66,7 @@ def draw():
     global speed
     global turn
     global tank
+    global move
     global moveUp
     global moveBack
     global turnCCW
@@ -77,6 +78,7 @@ def draw():
     global speed2
     global turn2
     global tank2
+    global move2
     global moveUp2
     global moveBack2
     global turnCCW2
