@@ -432,7 +432,7 @@ def mouseMoved():
     global buttonColor3
     global helpScreen
     global homeScreen
-   #makes the buttons shange when mouse hovers over
+   # Makes the buttons shange when mouse hovers over
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
         buttonColor = color(55, 255, 255)
     else:
@@ -455,7 +455,7 @@ def mouseClicked():
     if mouseX <= 170 and mouseX >= 20 and mouseY >=20 and mouseY <= 60:
         helpScreen = True
         homeScreen = False
-    #moves back to home screen from help screen
+    # Moves back to home screen from help screen
     if helpScreen == True and mouseX <= 30 and mouseY <= 30:
         helpScreen = False
         homeScreen = True
