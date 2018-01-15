@@ -1,4 +1,4 @@
-#screen and button variables
+# Screen and button variables
 time = 50
 homeScreen = True
 buttonColor = color(0, 200, 200)
@@ -6,7 +6,7 @@ buttonColor2 = color(200, 200, 0)
 buttonColor3 = color(255, 0, 0)
 helpScreen = False
 def setup():
-    #main screen setup
+    # Main screen setup
     size(1000, 500)
     global img
     img = createGraphics(1000, 500)
@@ -34,7 +34,7 @@ moveUp = False
 moveBack = False
 turnCCW = False
 turnCW = False
-#Bullet
+# Bullet
 bullet = PVector(800, 200)
 shot = False
 frag = False
@@ -96,7 +96,7 @@ def draw():
         fill(0)
         textFont(font2)
         textSize(120)
-        #main title
+        # Main title
         text("TANK", 200, 100)
         text("GAME", 400, 200)
         fill(buttonColor)
