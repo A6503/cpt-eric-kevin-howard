@@ -357,7 +357,7 @@ def draw():
             shot = False
             shot2 = False
             time = 50
-            
+            # Death Animation
     elif bulletTime >= 60 and bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
         if time <= 150:
             move = False
@@ -403,8 +403,9 @@ def draw():
             shot2 = False
             shot = False
             time = 50
-            
-    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
+   
+    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y 
+            <= 20 and bullet2.y-tank2.y >= -20:t
         if time <= 150:
             move2 = False
             bulletSpeed2.set(0, 0)
