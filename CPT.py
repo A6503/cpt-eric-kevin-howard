@@ -30,6 +30,7 @@ tank = PVector(800, 200)
 turn = 180
 speed = PVector(0, 0)
 # Moving tank 1
+move = True
 moveUp = False
 moveBack = False
 turnCCW = False
@@ -44,6 +45,7 @@ tank2 = PVector(400, 200)
 turn2 = 0
 speed2 = PVector(0,0)
 # Moving tank 2
+move2 = True
 moveUp2 = False
 moveBack2 = False
 turnCCW2 = False
@@ -82,6 +84,19 @@ def draw():
     global bullet2
     global shot2
     global frag2
+    
+    # Motion Control
+    if move == False:
+        moveUp = False
+        moveBack = False
+        turnCW = False
+        turnCCW = False
+    
+    if move2 == False:
+        moveUp2 = False
+        moveBack2 = False
+        turnCW2 = False
+        turnCCW2 = False
     
     font = createFont("Ubuntu Mono Bold", 20)# PrimaryFont
     font2 = createFont("URW Bookman L Demi Bold", 20)# Decorative Font
@@ -320,6 +335,7 @@ def draw():
     # Bullet Kills
     if bullet.x-tank2.x <= 20 and bullet.x-tank2.x >= -20 and bullet.y-tank2.y <= 20 and bullet.y-tank2.y >= -20:
         if time <= 150:
+            move2 = False
             bulletSpeed.set(0, 0)
             noStroke()
             fill(255, 255, 0)
@@ -331,6 +347,7 @@ def draw():
             ellipse(tank2.x, tank2.y, time, time)
             time+=4
         else:
+            move2 = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
@@ -341,6 +358,7 @@ def draw():
             
     elif bulletTime >= 60 and bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
         if time <= 150:
+            move = False
             bulletSpeed.set(0, 0)
             noStroke()
             fill(255, 255, 0)
@@ -352,6 +370,7 @@ def draw():
             ellipse(tank.x, tank.y, time, time)
             time+=4
         else:
+            move = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
@@ -362,6 +381,7 @@ def draw():
 
     if bullet2.x-tank.x <= 20 and bullet2.x-tank.x >= -20 and bullet2.y-tank.y <= 20 and bullet2.y-tank.y >= -20:
         if time <= 150:
+            move = False
             bulletSpeed2.set(0, 0)
             noStroke()
             fill(255, 255, 0)
@@ -373,6 +393,7 @@ def draw():
             ellipse(tank.x, tank.y, time, time)
             time+=4
         else:
+            move = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
@@ -383,6 +404,7 @@ def draw():
             
     elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
         if time <= 150:
+            move2 = False
             bulletSpeed2.set(0, 0)
             noStroke()
             fill(255, 255, 0)
@@ -394,6 +416,7 @@ def draw():
             ellipse(tank2.x, tank2.y, time, time)
             time+=4
         else:
+            move2 = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
