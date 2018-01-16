@@ -5,6 +5,8 @@ buttonColor = color(0, 200, 200)
 buttonColor2 = color(200, 200, 0)
 buttonColor3 = color(255, 0, 0)
 helpScreen = False
+tankDraw = True
+tank2Draw = True
 def setup():
     # Main screen setup
     size(1000, 500)
@@ -62,6 +64,8 @@ def draw():
     global homeScreen
     global helpScreen    
     global time
+    global tankDraw
+    global tank2Draw
     # TANK 1 Global
     global speed
     global turn
@@ -150,7 +154,8 @@ def draw():
         # Bullets for tank 1
     fill(0)
     speed = PVector.fromAngle(radians(turn))
-    ellipse(bullet.x, bullet.y, 6, 6)
+    if tankDraw == True and tank2Draw == True:
+        ellipse(bullet.x, bullet.y, 6, 6)
     if shot == False:
         bullet.set(tank)
         bulletSpeed.set(speed.mult(6))
@@ -182,7 +187,8 @@ def draw():
     # Bullets for tank 2
     fill(0)
     speed2 = PVector.fromAngle(radians(turn2))
-    ellipse(bullet2.x, bullet2.y, 6, 6)
+    if tankDraw == True and tank2Draw == True:
+        ellipse(bullet2.x, bullet2.y, 6, 6)
     if shot2 == False:
         bullet2.set(tank2)
         bulletSpeed2.set(speed2.mult(6))
@@ -264,17 +270,17 @@ def draw():
     # TANK 1
     translate(tank.x, tank.y)
     rotate(radians(turn))
-    
-    fill(50, 50, 50)
-    rect(-25, -20, 50, 40)
-    rect(-25, -15, 50, 30)
-    rect(0, -3, 40, 6)
-    ellipse(0, 0, 25, 25)  
-    resetMatrix()
-    translate(tank.x, tank.y)
-    fill(0, 255, 100)
-    textFont(font)
-    text("P1", -10, 5)
+    if tankDraw == True:
+        fill(50, 50, 50)
+        rect(-25, -20, 50, 40)
+        rect(-25, -15, 50, 30)
+        rect(0, -3, 40, 6)
+        ellipse(0, 0, 25, 25)  
+        resetMatrix()
+        translate(tank.x, tank.y)
+        fill(0, 255, 100)
+        textFont(font)
+        text("P1", -10, 5)
     #Turning Tank 1
     speed = PVector.fromAngle(radians(turn))
     # Tank 1 movement
@@ -301,17 +307,17 @@ def draw():
     # TANK 2
     translate(tank2.x, tank2.y)
     rotate(radians(turn2))
-    
-    fill(50, 50, 50)
-    rect(-25, -20, 50, 40)
-    rect(-25, -15, 50, 30)
-    rect(0, -3, 40, 6)
-    ellipse(0, 0, 25, 25)
-    resetMatrix()
-    translate(tank2.x, tank2.y)
-    fill(255, 0, 100)
-    textFont(font)
-    text("P2", -10, 5)
+    if tank2Draw == True:
+        fill(50, 50, 50)
+        rect(-25, -20, 50, 40)
+        rect(-25, -15, 50, 30)
+        rect(0, -3, 40, 6)
+        ellipse(0, 0, 25, 25)
+        resetMatrix()
+        translate(tank2.x, tank2.y)
+        fill(255, 0, 100)
+        textFont(font)
+        text("P2", -10, 5)
     # Turning tank 2
     speed2 = PVector.fromAngle(radians(turn2))
     # Tank 2 movement
@@ -331,25 +337,28 @@ def draw():
         turn2 -= 4
     elif turnCW2 == True:
         turn2 += 4
-    speed2 = PVector.fromAngle(radians(turn2))
-    
+#########################################################################################################################3
     resetMatrix()
     # Bullet Kills
     if bullet.x-tank2.x <= 20 and bullet.x-tank2.x >= -20 and bullet.y-tank2.y <= 20 and bullet.y-tank2.y >= -20:
         if time <= 150:
             move2 = False
+            move = False
             bulletSpeed.set(0, 0)
             noStroke()
             fill(255, 255, 0)
             ellipse(tank2.x, tank2.y, time, time)
             time+=4
         elif time <= 250:
+            tank2Draw = False
             noStroke()
             fill(255, 255, 0, 255-(time-150))
             ellipse(tank2.x, tank2.y, time, time)
             time+=4
         else:
+            tank2Draw = True
             move2 = True
+            move = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
@@ -357,21 +366,25 @@ def draw():
             shot = False
             shot2 = False
             time = 50
-            # Death Animation
+            
     elif bulletTime >= 60 and bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
         if time <= 150:
             move = False
+            move2 = False
             bulletSpeed.set(0, 0)
             noStroke()
             fill(255, 255, 0)
             ellipse(tank.x, tank.y, time, time)
             time+=4
         elif time <= 250:
+            tankDraw = False
             noStroke()
             fill(255, 255, 0, 255-(time-150))
             ellipse(tank.x, tank.y, time, time)
             time+=4
         else:
+            tankDraw = True
+            move2 = True
             move = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
@@ -381,20 +394,25 @@ def draw():
             shot2 = False
             time = 50
 
+
     if bullet2.x-tank.x <= 20 and bullet2.x-tank.x >= -20 and bullet2.y-tank.y <= 20 and bullet2.y-tank.y >= -20:
         if time <= 150:
             move = False
+            move2 = False
             bulletSpeed2.set(0, 0)
             noStroke()
             fill(255, 255, 0)
             ellipse(tank.x, tank.y, time, time)
             time+=4
         elif time <= 250:
+            tankDraw = False
             noStroke()
             fill(255, 255, 0, 255-(time-150))
             ellipse(tank.x, tank.y, time, time)
             time+=4
         else:
+            tankDraw = True
+            move2 = True
             move = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
@@ -403,23 +421,26 @@ def draw():
             shot2 = False
             shot = False
             time = 50
-   
-    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y 
-            <= 20 and bullet2.y-tank2.y >= -20:t
+            
+    elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
         if time <= 150:
             move2 = False
+            move = False
             bulletSpeed2.set(0, 0)
             noStroke()
             fill(255, 255, 0)
             ellipse(tank2.x, tank2.y, time, time)
             time+=4
         elif time <= 250:
+            tank2Draw = False
             noStroke()
             fill(255, 255, 0, 255-(time-150))
             ellipse(tank2.x, tank2.y, time, time)
             time+=4
         else:
+            tank2Draw = True
             move2 = True
+            move = True
             tank2.set(random(800), random(300))
             turn2 = random(360)
             turn = random(360)
@@ -427,6 +448,10 @@ def draw():
             shot2 = False
             shot = False
             time = 50
+
+                               
+################################################################################################################################
+                               
 def mouseMoved():
     global buttonColor
     global buttonColor2
