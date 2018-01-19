@@ -455,10 +455,10 @@ def mouseMoved():
 def mouseClicked():
     global homeScreen
     global helpScreen
-    #moves to game screen
+    # Moves to game screen
     if mouseX <= 710 and mouseX >= 250 and mouseY <= 400 and mouseY >= 180:
         homeScreen = False
-    #moves to instructions screen
+    # Moves to instructions screen
     if mouseX <= 170 and mouseX >= 20 and mouseY >=20 and mouseY <= 60:
         helpScreen = True
         homeScreen = False
