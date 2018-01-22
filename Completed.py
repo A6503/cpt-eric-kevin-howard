@@ -65,6 +65,10 @@ blox4 = False
 blox5 = False
 super = False
 super2 = False
+# Score
+score = 0
+score2 = 0
+
 def draw():
     global blox
     global blox2
@@ -78,6 +82,9 @@ def draw():
     global time
     global tankDraw
     global tank2Draw
+    # Scores
+    global score
+    global score2
     # TANK 1 Global
     global speed
     global turn
@@ -161,6 +168,16 @@ def draw():
     else:
         background(img)
         stroke(0)
+        strokeWeight(4)
+        line(0, 425, 1000, 425)
+        noStroke()
+        textSize(40)
+        fill(0, 255, 100)
+        text(score, 250, 480)
+        fill(255, 0, 100)
+        text(score2, 700, 480)
+        stroke(0)
+        strokeWeight(1)
         
 
         # Bullets for tank 1
@@ -452,6 +469,7 @@ def draw():
             shot2 = False
             super = False
             super2 = False
+            score += 1
             time = 50
             
     elif bulletTime >= 60 and bullet.x-tank.x <= 20 and bullet.x-tank.x >= -20 and bullet.y-tank.y <= 20 and bullet.y-tank.y >= -20:
@@ -481,7 +499,8 @@ def draw():
             shot = False
             shot2 = False
             super = False
-            super2 = False
+            super2 = 
+            score2 += 1
             time = 50
 
 
@@ -513,6 +532,7 @@ def draw():
             shot = False
             super = False
             super2 = False
+            score2 += 1
             time = 50
             
     elif bulletTime2 >= 60 and bullet2.x-tank2.x <= 20 and bullet2.x-tank2.x >= -20 and bullet2.y-tank2.y <= 20 and bullet2.y-tank2.y >= -20:
@@ -543,6 +563,7 @@ def draw():
             shot = False
             super = False
             super2 = False
+            score += 1
             time = 50
 
                                
@@ -580,7 +601,7 @@ def draw():
         blox3 = True
     if blox3 == True:                
         fill(140)
-        rect(370, 420, 40, 40)
+        rect(320, 370, 40, 40)
         fill(0)
         ellipse(390, 440, 18, 18) 
         if ((tank2.x - 390)**2 <= 400 or (tank2.x - 430)**2 <= 400) and ((tank2.y - 420)**2 <= 400 or (tank2.y - 460)**2 <= 400):                                                
