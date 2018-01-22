@@ -499,7 +499,7 @@ def draw():
             shot = False
             shot2 = False
             super = False
-            super2 = 
+            super2 = False
             score2 += 1
             time = 50
 
@@ -603,7 +603,7 @@ def draw():
         fill(140)
         rect(320, 370, 40, 40)
         fill(0)
-        ellipse(390, 440, 18, 18) 
+        ellipse(340, 390, 18, 18) 
         if ((tank2.x - 390)**2 <= 400 or (tank2.x - 430)**2 <= 400) and ((tank2.y - 420)**2 <= 400 or (tank2.y - 460)**2 <= 400):                                                
             blox3 = False
             super2 = True
