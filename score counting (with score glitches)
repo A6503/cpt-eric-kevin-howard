@@ -1,4 +1,5 @@
 #glitched version
+#score increases uncontrollably
 # Screen and button variables
 time = 50
 homeScreen = True
