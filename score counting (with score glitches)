@@ -1,5 +1,6 @@
 #glitched version
 #score increases uncontrollably
+#not put into final build
 # Screen and button variables
 time = 50
 homeScreen = True
